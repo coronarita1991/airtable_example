@@ -19,12 +19,12 @@ project/
 
 # 필수 조건
 ```
-	•	Python 3.8 이상
-	•	Airtable Personal Access Token (PAT)
-	•	설치된 Python 패키지:
-	•	pyairtable
-	•	pandas
-	•	python-dotenv
+•	Python 3.8 이상
+•	Airtable Personal Access Token (PAT)
+•	설치된 Python 패키지:
+•	pyairtable
+•	pandas
+•	python-dotenv
 ```
 
 # 설치 및 설정
@@ -45,7 +45,7 @@ TABLE_ID=your_table_id
 	•	BASE_ID: Airtable Base ID (https://airtable.com/api 에서 확인)
 	•	TABLE_ID: Airtable 테이블 ID (테이블 설정에서 확인)
 
-	3.	CSV 데이터 준비
+##	3.	CSV 데이터 준비
 	•	업로드할 데이터를 tools_data_cleaned.csv 파일에 저장합니다.
 	•	파일에는 Name, Link, Description 열이 포함되어야 합니다.
 
