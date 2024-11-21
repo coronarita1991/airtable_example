@@ -66,6 +66,5 @@ TABLE_ID=your_table_id
 	•	Airtable의 API 요청 속도 제한에 주의하세요. (기본적으로 초당 5개의 요청 제한)
 
 # 참고 자료
-
-	•	Airtable API: https://airtable.com/api
-	•	PyAirtable 라이브러리 문서: https://pyairtable.readthedocs.io
+- Airtable API: https://airtable.com/api
+- PyAirtable 라이브러리 문서: https://pyairtable.readthedocs.io
