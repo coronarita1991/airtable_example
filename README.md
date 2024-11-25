@@ -31,7 +31,7 @@ project/
 
 ##	1.	Python 패키지 설치
 
-`pip install pyairtable pandas python-dotenv`
+`pip install pyairtable==2.9.2 pandas python-dotenv`
 
 
 ##	2.	.env 파일 생성
@@ -64,6 +64,27 @@ TABLE_ID=your_table_id
 
 	•	.env 파일에 민감한 정보가 포함되어 있으므로 Git에 추가하지 않도록 .gitignore에 포함하세요.
 	•	Airtable의 API 요청 속도 제한에 주의하세요. (기본적으로 초당 5개의 요청 제한)
+
+# 기타 (24. 11. 25.)
+- Windows10 WSL2 의 python3.10.12 환경에서 순환참조 에러가 발생
+```
+Traceback (most recent call last):
+  File "/home/coronarita/workspace/airtable_example/airtable_upload.py", line 1, in <module>
+    from pyairtable import Api
+......
+    return typing._eval_type(  # type: ignore
+  File "/usr/lib/python3.10/typing.py", line 327, in _eval_type
+    return t._evaluate(globalns, localns, recursive_guard)
+  File "/usr/lib/python3.10/typing.py", line 694, in _evaluate
+    eval(self.__forward_code__, globalns, localns),
+  File "<string>", line 1, in <module>
+AttributeError: partially initialized module 'pyairtable' has no attribute 'api' (most likely due to a circular import)`
+```
+- Github에 유사 이슈가 3일 전 등록되어 있었음(https://github.com/gtalarico/pyairtable/issues/411)
+- 해결 방법 : `pydantic`의 버전을 2.10.1에서 2.9.2로 강제로 Downgrade하여 해결
+- 원인 분석 : 
+	- `Pydantic` 2.10.0 이후의 버전에서 `BaseModel`의 타입힌트 체킹 동작이 변경되었고,`PyAirtable` 라이브러리에서 이 변경에 대응하지 못한 것으로 추정
+	- 이미 정의되지 않은 다른 객체를 참조하게 되어 "미완성 상태(partially initialized)" 오류를 발생
 
 # 참고 자료
 - Airtable API: https://airtable.com/api
