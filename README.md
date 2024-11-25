@@ -31,7 +31,8 @@ project/
 
 ##	1.	Python 패키지 설치
 
-`pip install pyairtable==2.9.2 pandas python-dotenv`
+`pip install pyairtable pandas python-dotenv`
+`pip install --upgrade pydantic==2.9.2`
 
 
 ##	2.	.env 파일 생성
